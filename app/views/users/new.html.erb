@@ -1,0 +1,18 @@
+<div class="flex-col">
+
+  <h1 class="title font-bold text-4xl">New User</h1>
+  
+  <%= form_with model: @user do |form| %>
+  <div class="">
+    <%= form.label :name %><br>
+    <%= form.text_field :name %><br>
+  </div>
+  <div>
+    <%= form.label :email %><br>
+    <%= form.text_field :email %><br>
+  </div>
+  <div class="buttone">
+    <%= form.submit %>
+  </div> 
+  <% end %>
+</div>

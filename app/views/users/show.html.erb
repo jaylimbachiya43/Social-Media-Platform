@@ -1,0 +1,14 @@
+<div class=" flex-col">
+
+  <p class="font-bold text-4xl text-blue-600 pb-10">User details</p>
+  <div class=" flex-col">
+
+    <p> name: <%= @user.name %> </p> 
+    <p>  email: <%= @user.email%></p>
+   
+  </div>
+  <div>
+    <%=link_to 'Edit', edit_user_path(@user)%>
+    <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
