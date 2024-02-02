@@ -1,0 +1,22 @@
+<div>
+  <h1 class="font-bold text-4xl">Login</h1>
+
+  <%= form_tag sessions_path do |form|%>
+ <div>
+  
+   <%= label_tag :email %>
+  <%= text_field_tag :email %>
+ </div>
+ <div>
+  
+  <%= label_tag :password %>
+  <%= text_field_tag :password %>
+</div>
+
+<div class="buttone">
+  
+ <%= submit_tag 'Login'%>
+</div>
+
+<% end %>
+</div>

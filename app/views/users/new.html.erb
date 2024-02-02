@@ -3,13 +3,39 @@
   <h1 class="title font-bold text-4xl">New User</h1>
   
   <%= form_with model: @user do |form| %>
-  <div class="">
+  <div class="field">
     <%= form.label :name %><br>
-    <%= form.text_field :name %><br>
+    <%= form.text_field :name, placeholder: 'Enter your name' %><br>
   </div>
-  <div>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %><br>
+
+  <div class="field">
+    <%= form.label :bio %><br>
+    <%= form.text_area :bio , rows: 5, cols: 40, placeholder: 'Enter your bio here...' %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :mobile %><br>
+    <%= form.number_field :mobile  %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %><br>
+    <%= form.select :gender, options_for_select(['Male', 'Female', 'Other'])  %><br>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   <div class="buttone">
     <%= form.submit %>

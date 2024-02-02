@@ -58,3 +58,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'tailwindcss-rails'
 
 gem 'jquery-rails'
+
+gem 'bcrypt'

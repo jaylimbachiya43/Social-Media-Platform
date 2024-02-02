@@ -3,9 +3,12 @@
   <p class="font-bold text-4xl text-blue-600 pb-10">User details</p>
   <div class=" flex-col">
 
-    <p> name: <%= @user.name %> </p> 
-    <p>  email: <%= @user.email%></p>
-   
+    <p> Name: <%= @user.name %> </p> 
+    <p>  Bio: <%= @user.bio%></p>
+    <p> Gender: <%= @user.gender %> </p> 
+    <p>  Email: <%= @user.email%></p>
+    <p> Mobile: <%= @user.mobile %> </p> 
+    <p>  password: <%= @user.password%></p>
   </div>
   <div>
     <%=link_to 'Edit', edit_user_path(@user)%>

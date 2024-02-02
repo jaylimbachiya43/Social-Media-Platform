@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end 
 def new 
+  @gender_options = ['Male', 'Female', 'Other']
   @user = User.new
   
 end
@@ -17,6 +18,8 @@ end
 
   def create 
     @user = User.new(user_params)
+
+
     if @user.save
       redirect_to root_path, notice: "User was successflly created"
       UserMailer.welcome_email(@user).deliver_now
@@ -43,7 +46,7 @@ end
   private
   
   def user_params 
-    params.require(:user).permit(:name, :email)   
+    params.require(:user).permit(:name, :email,:bio, :password, :mobile, :gender, :password_confirmation)   
   end
 
 end
