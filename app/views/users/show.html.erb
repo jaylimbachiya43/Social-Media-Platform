@@ -1,6 +1,6 @@
 <div class=" flex-col">
 
-  <p class="font-bold text-4xl text-blue-600 pb-10">User details</p>
+  <p class="font-bold text-4xl text-blue-600 pb-10">hey <%=current_user.name%></p>
   <div class=" flex-col">
 
     <p> Name: <%= @user.name %> </p> 
@@ -8,10 +8,14 @@
     <p> Gender: <%= @user.gender %> </p> 
     <p>  Email: <%= @user.email%></p>
     <p> Mobile: <%= @user.mobile %> </p> 
-    <p>  password: <%= @user.password%></p>
   </div>
   <div>
     <%=link_to 'Edit', edit_user_path(@user)%>
     <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
+  
+    <%=link_to 'Create Post', new_user_post_path(@user)%>
+    <%=link_to 'All posts', user_posts_path(@user)%>
+
+  
   </div>
 </div>

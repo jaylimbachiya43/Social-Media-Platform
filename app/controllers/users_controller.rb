@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 def new 
   @gender_options = ['Male', 'Female', 'Other']
   @user = User.new
-  
+
 end
 def edit 
   @user = User.find(params[:id])
@@ -18,7 +18,6 @@ end
 
   def create 
     @user = User.new(user_params)
-
 
     if @user.save
       redirect_to root_path, notice: "User was successflly created"

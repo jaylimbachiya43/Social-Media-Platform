@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= form.label :gender %><br>
-    <%= form.select :gender, options_for_select(['Male', 'Female', 'Other'])  %><br>
+    <%= form.select :gender, options_for_select(@gender_options)  %><br>
   </div>
 
   <div class="field">
