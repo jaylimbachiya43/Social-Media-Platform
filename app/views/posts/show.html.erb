@@ -4,6 +4,11 @@
   <h1><%=current_user.name%> </h1> <br>
 
   <h2 class=""> title: <%= @post.title%> </h2>
-  
-  
+    <!-- Like button -->
+    <%= link_to "Like", like_post_path(@post), method: :post, remote: true, class: "like-button" %>
+
+    <!-- Display likes -->
+    <p>Likes: <%= @post.likes.count %></p>
+
+    <h3>Comments:</h3>
 </div>

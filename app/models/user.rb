@@ -9,5 +9,10 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
 
+  attr_reader :username
+
+  def initialize(username)
+    @username = username
+  end
  
  end
