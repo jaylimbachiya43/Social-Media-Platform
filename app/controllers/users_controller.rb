@@ -6,11 +6,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end 
-def new 
-  @gender_options = ['Male', 'Female', 'Other']
-  @user = User.new
+  def new 
+    @gender_options = ['Male', 'Female', 'Other']
+    @user = User.new
+  end
 
-end
 def edit 
   @user = User.find(params[:id])
 

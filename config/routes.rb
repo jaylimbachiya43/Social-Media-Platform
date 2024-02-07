@@ -23,5 +23,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:create]
     end
   end
+  resources :posts do
+    member do
+      post 'like', to: 'likes#create'
+    end
+  end
 
 end

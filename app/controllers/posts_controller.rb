@@ -48,10 +48,22 @@ class PostsController < ApplicationController
   #   end
 
   def like
-    @post.like(current_user)
-    respond_to do |format|
-      format.js { render :like }
-    end
+    @post = Post.find(params[:id])
+    @like = current_user.likes.build(post: @post)
+
+    if @post.likes.where(user: current_user).exists?
+      respond_to do |format|
+        format.js { render :already_liked }
+      end
+    else
+      @like = @post.likes.build(user: current_user)
+
+      if @like.save
+        respond_to do |format|
+          format.js
+        end
+      end
+      end
   end
 
   def like_post(user)
@@ -63,14 +75,29 @@ class PostsController < ApplicationController
   end
 
 
+  def comment
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.build(comment_params)
+    @comment.user = current_user
+
+    if @comment.save
+      redirect_to user_post_path(@post.user, @post), notice: 'Comment created successfully.'
+    else
+      redirect_to user_post_path(@post.user, @post), alert: 'Failed to create comment.'
+    end
+  end
+
   private
 
    def set_post
     @post = Post.find(params[:id])
   end
+  
   def post_params
     params.require(:post).permit(:title)
   end
 
-
+  def comment_params
+    params.require(:comment).permit(:comment)
+  end
 end

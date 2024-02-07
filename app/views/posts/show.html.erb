@@ -1,14 +1,23 @@
-
-
 <div class="flex-col">
-  <h1><%=current_user.name%> </h1> <br>
+  <h1><%= current_user.name %></h1> <br>
+  <h2 class="">Title: <%= @post.title %></h2>
 
-  <h2 class=""> title: <%= @post.title%> </h2>
-    <!-- Like button -->
-    <%= link_to "Like", like_post_path(@post), method: :post, remote: true, class: "like-button" %>
+  <!-- Like button -->
+  <%= button_to 'Like', like_post_path(@post), method: :post, remote: true, id: "like-btn" %>
+  <!-- Display likes -->
+  <p id="like-count">Likes: <%= @post.likes.count %></p>
 
-    <!-- Display likes -->
-    <p>Likes: <%= @post.likes.count %></p>
+  <h3>Comments:</h3>
+  
 
-    <h3>Comments:</h3>
+  <div>
+    <p> <strong> user:<%= @post.comments.user%></strong> <%= @post.comment%></p>
+  </div>
+  <!-- Add comment form -->
+  <%= form_with model: @comment  do |form| %>
+  <%= form.text_area :comment, placeholder: 'Add a comment...' %>
+  <%= form.submit 'Comment' %>
+<% end %>
+
+
 </div>
