@@ -1,21 +1,80 @@
-<div class=" flex-col">
 
-  <p class="font-bold text-4xl text-blue-600 pb-10">hey <%=current_user.name%></p>
-  <div class=" flex-col">
 
-    <p> Name: <%= @user.name %> </p> 
-    <p>  Bio: <%= @user.bio%></p>
-    <p> Gender: <%= @user.gender %> </p> 
-    <p>  Email: <%= @user.email%></p>
-    <p> Mobile: <%= @user.mobile %> </p> 
-  </div>
-  <div>
-    <%=link_to 'Edit', edit_user_path(@user)%>
-    <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
-  
-    <%=link_to 'Create Post', new_user_post_path(@user)%>
-    <%=link_to 'All posts', user_posts_path(@user)%>
+<main>
 
-    
-  </div>
-</div>
+<header>
+
+	<div class="container">
+
+		<div class="profile">
+
+			<div class="profile-image">
+
+  <% if @user.profile_photo.present? %>
+  <%= image_tag @user.profile_photo, alt: 'User Profile Photo', class: 'profile-photo' %>
+    <% end %>
+			</div>
+
+			<div class="profile-user-settings">
+
+				<h1 class="profile-user-name"><%=current_user.name%></h1>
+
+				<button class="btn profile-edit-btn"><%=link_to 'Edit Profile', edit_user_path(@user)%></button>
+
+				<button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+
+			</div>
+
+			<div class="profile-stats">
+
+				<ul>
+					<li><span class="profile-stat-count">164</span> posts</li>
+					<li><span class="profile-stat-count">188</span> followers</li>
+					<li><span class="profile-stat-count">206</span> following</li>
+				</ul>
+
+			</div>
+
+			<div class="profile-bio">
+
+				<p><span class="profile-real-name"><%=current_user.name%> :</span> <%=current_user.bio%></p>
+
+			</div>
+
+		</div>
+		<!-- End of profile section -->
+
+	</div>
+	<!-- End of container -->
+
+</header>
+	<div class="container">
+
+		<div class="gallery">
+      <% current_user.posts.each do |elem| %>
+
+			<div class="gallery-item" tabindex="0">
+
+        <% if elem.image.present? %>
+     <%= image_tag elem.image, alt: 'Post Image' %>
+    <% end %>
+				<div class="gallery-item-info">
+
+					<ul>
+						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i><%= elem.likes.count %></li>
+						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> <%= elem.comments.count%></li>
+					</ul>
+
+				</div>
+
+			</div>
+      <%end%>
+
+
+
+
+
+	</div>
+	<!-- End of container -->
+
+</main>

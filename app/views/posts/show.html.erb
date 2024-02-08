@@ -1,4 +1,4 @@
-<div class="flex-col">
+<div class="">
   <h1><%= current_user.name %></h1> <br>
   <h2 class="">Title: <%= @post.title %></h2>
 
@@ -7,17 +7,15 @@
   <!-- Display likes -->
   <p id="like-count">Likes: <%= @post.likes.count %></p>
 
-  <h3>Comments:</h3>
-  
+  <h3>Comments:</h3> <br>
+<%= render 'comments/index', comments: @post.comments %> <br>
 
-  <div>
-    <p> <strong> user:<%= @post.comments.user%></strong> <%= @post.comment%></p>
-  </div>
-  <!-- Add comment form -->
-  <%= form_with model: @comment  do |form| %>
-  <%= form.text_area :comment, placeholder: 'Add a comment...' %>
-  <%= form.submit 'Comment' %>
-<% end %>
+
+  <%= render 'comments/new', post: @comment %>
+
+
 
 
 </div>
+
+

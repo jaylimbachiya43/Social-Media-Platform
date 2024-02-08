@@ -10,11 +10,24 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
- 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SYw9j4E+DNURtNt4r6doApg2PL4iCEz5K++1Sk" crossorigin="anonymous">
+
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+      <nav class="navbar">
+    <div class="nav-wrapper">
+        <p class="brand-img" >Instagrame</p>
+        <input type="text" class="search-box" placeholder="search">
+        <div class="nav-items">
+          <span class="icon">&#x1F3E0;</span>
+
+<span class="icon">&#x1F4DD;</span>
+         
+        </div>
+    </div>
+</nav>
+    <main class="container ">
       <% flash.each do |key, value| %>
       <div class="flash <%= key %>">
         <%= value %>

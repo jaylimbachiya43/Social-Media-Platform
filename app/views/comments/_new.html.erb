@@ -1,0 +1,5 @@
+<%= form_with model: [@post, Comment.new], url: user_post_comments_path(@post.user, @post) do |form| %>
+  <%= form.label :comment, 'Comment:' %>
+  <%= form.text_field :comment, placeholder: 'Enter your comment' %>
+  <%= form.submit 'Submit Comment' %>
+<% end %>

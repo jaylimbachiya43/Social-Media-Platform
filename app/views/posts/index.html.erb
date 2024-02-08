@@ -1,26 +1,46 @@
-<!-- <div class="flex-col items-center  mb-5">
-  <h1><%=current_user.name%> all Post</h1> 
+<section class="main">
+    <div class="wrapper">
+        <div class="left-col">
+
+            <% @posts.each do |e| %>
 
 
-   
-      
-    <% @posts.each do |post|%> 
-      <div class="flex-col ">
-        Title: <%= link_to post.title, user_post_path(current_user, post) %>
-      </div>
-  <%end%>
-  </div> -->
-
-<div class="">
-  
-  <h1>Recent Posts</h1>
-
-  <% @posts.each do |e| %>
-    <div class=" " >
-      <p><%= e.user.name %> posted this.</p>
-      Title: <%= link_to e.title, user_post_path(e.user, e)%> 
-      <p><%= "Likes: #{e.likes.count}" %></p>
-    
-      </div>
+      <div class="post">
+                <div class="info">
+                    <div class="user">
+                        <div class="profile-pic">
+                         <% if e.user.profile_photo.present? %>
+              <%= image_tag e.user.profile_photo, alt: 'User Profile Photo'%>
+    <% end %>
+                          </div>
+                        <p class="username"><%= e.user.name %></p>
+                    </div>
+                    <img src="img/option.PNG" class="options" alt="option">
+                </div>
+  <% if e.image.present? %>
+              <%= image_tag e.image, alt: 'User Profile Photo'%>
+    <% end %>                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <p class="icon">&#x1F44D;</p>
+                                                <p class="icon">&#x1F4AC;</p>
+                        <p class="icon">&#x1F4E4;</p>
+                        <p class="icon">&#x1F4BE;</p>
+                    </div>
+                    <p class="likes"> <%= e.likes.count%> likes</p>
+                    <p class="description"><span>username </span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur tenetur veritatis placeat, molestiae impedit aut provident eum quo natus molestias?</p>
+                    <p class="post-time">2 minutes ago</p>
+                </div>
+                <div class="comment-wrapper">
+                   <p class='icon'>&#x1F604;</p>
+                                       <input type="text" class="comment-box" placeholder="Add a comment">
+                    <button class="comment-btn">post</button>
+                </div>
+            </div>
   <% end %>
-</div>
+
+ 
+
+
+        </div>
+    </div>
+</section>

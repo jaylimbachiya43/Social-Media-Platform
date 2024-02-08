@@ -10,8 +10,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments
   end
-
+  
   def new
     @post = current_user.posts.new
   end
@@ -94,7 +95,7 @@ class PostsController < ApplicationController
   end
   
   def post_params
-    params.require(:post).permit(:title)
+    params.require(:post).permit(:title, :image)
   end
 
   def comment_params
