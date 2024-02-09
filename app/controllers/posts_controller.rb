@@ -51,20 +51,22 @@ class PostsController < ApplicationController
   def like
     @post = Post.find(params[:id])
     @like = current_user.likes.build(post: @post)
-
     if @post.likes.where(user: current_user).exists?
+      
       respond_to do |format|
-        format.js { render :already_liked }
+        format.js { render "likes/already_liked" }
       end
     else
       @like = @post.likes.build(user: current_user)
-
+      
       if @like.save
         respond_to do |format|
           format.js
+          format.html { redirect_to root_path }
         end
       end
-      end
+      @likes_count = @post.likes.count
+    end
   end
 
   def like_post(user)

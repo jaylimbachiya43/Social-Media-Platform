@@ -2,7 +2,7 @@
 
   <h1 class="">New User</h1>
   
-  <%= form_with model: @user do |form| %>
+  <%= form_with model: @user, remote: true, id: 'xyz' do |form| %>
   <div class="field">
     <%= form.label :name %><br>
     <%= form.text_field :name, placeholder: 'Enter your name' %><br>
@@ -43,7 +43,15 @@
 
   </div>
   <div class="buttone">
-    <%= form.submit %>
+    <%= form.submit, id: 'abc' %>
   </div> 
   <% end %>
 </div>
+
+$('#abc').change(function(){
+  $.ajax({
+    url: '/posts'
+    method: 'GEt',
+    data: 
+  })
+})

@@ -1,11 +1,14 @@
 <div class="">
   <h1><%= current_user.name %></h1> <br>
   <h2 class="">Title: <%= @post.title %></h2>
-
+  <div id="loader" style="display: none">Loading</div>
   <!-- Like button -->
   <%= button_to 'Like', like_post_path(@post), method: :post, remote: true, id: "like-btn" %>
   <!-- Display likes -->
-  <p id="like-count">Likes: <%= @post.likes.count %></p>
+  
+  <p id="like-count">
+    <%= render partial: 'likes_count' %>
+  </p>
 
   <h3>Comments:</h3> <br>
 <%= render 'comments/index', comments: @post.comments %> <br>
@@ -18,4 +21,16 @@
 
 </div>
 
-
+<script>
+$('#like-btn').click(function(){
+  $('#loader').css('display', 'block')
+  debugger
+  $.ajax({
+    url: '/perform-somthing' ,
+    method: 'GET',
+    success: function(){
+      $('#loader').css('display', 'none')
+    }
+  })
+})
+</script>
